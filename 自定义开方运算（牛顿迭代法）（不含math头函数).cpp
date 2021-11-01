@@ -3,7 +3,7 @@
 #define eps 1e-6     //给定一个精度epsilon 
 #define ABS(VAL) (((VAL)>0)?(VAL):(-(VAL))) //定义绝对值运算  
 
-float mypow(float y,int z){          //定义幂运算 
+double mypow(double y,int z){          //定义幂运算 
 	if(z==0){
 		return 1;
 	} else if(z==1){
@@ -12,7 +12,7 @@ float mypow(float y,int z){          //定义幂运算
 		return 1.0f/y;
 	} else if(z>0){
 		int r =2;
-		float s = y*y;
+		double s = y*y;
 		while(r<z-r){
 			s*=s;
 			r*=2;
@@ -25,7 +25,7 @@ float mypow(float y,int z){          //定义幂运算
 		}
 	} else {
 		int r=2;
-		float s =1.0f/y*1.0f/y;
+		double s =1.0f/y*1.0f/y;
 		while(r<-z-r){
 			s*=s;
 			r*=2;
@@ -39,10 +39,10 @@ float mypow(float y,int z){          //定义幂运算
 }
 
 
-float mysqrt(float n){
-	float  x0,x1;
+double mysqrt(double n){
+	double  x0,x1;
 	if(n==0){return 0;}
-	if(n<0){return false;} 
+	if(n<0){return 0;} 
 	x0=n/2;
 	x1=(x0+n/x0)/2; //牛顿迭代法,x1=x0-f(x0)/f'(X0), x1=x0-(x0^2-n)/2x0=x0-x0/2+n/2x0=x0/2+n/2x0
 	do{
@@ -52,8 +52,8 @@ float mysqrt(float n){
 return x1;
 } 
 
-float mycbrt(float n){      //三次根号 
-	float  x2,x3;
+double mycbrt(double n){      //三次根号 
+	double  x2,x3;
 	if(n==0){return 0;}
 	x2=n/2;
 	x3=(2*x2+n/(x2*x2))/3;
@@ -64,8 +64,8 @@ float mycbrt(float n){      //三次根号
 return x3;
 } 
 
-float root_5(float n){            //五次根号 
-    float x4,x5;
+double root_5(double n){            //五次根号 
+    double x4,x5;
     if(n==0){return 0;}
     x4=n/2;
     x5=(4*x4+n/(x4*x4*x4*x4))/5;
@@ -76,9 +76,9 @@ float root_5(float n){            //五次根号
 	return x5;
 }
 
-float root_k(float n,int y)        //自定义开n次方计算函数 
+double root_k(double n,int y)        //自定义开n次方计算函数 
  {
-    float x6,x7;
+    double x6,x7;
     if(n==0){return 0;}
     if(y==1){return n;}
     if (y<=0){return false;
@@ -95,10 +95,10 @@ float root_k(float n,int y)        //自定义开n次方计算函数
 
 
 int main () {
-	float k,k2,k3,k4;
+	double k,k2,k3,k4;
 	int b;
 printf("请输入x:");
-scanf("%f",&k);
+scanf("%lf",&k);
 printf("请输入开方次数：");
 scanf("%d",&b); 
 
@@ -106,9 +106,9 @@ k3=root_k(k,b);
 k2=root_5(k); 
 k4=mycbrt(k);
 
-printf("cbrt(%.2f)=%f",k,k4); 
-printf("\nroot[5](%.2f)=%f",k,k2);
-printf("\nroot[%d](%.2f)=%f\n",b,k,k3);
+printf("cbrt(%.2lf)=%lf",k,k4); 
+printf("\nroot[5](%.2lf)=%lf",k,k2);
+printf("\nroot[%d](%.2lf)=%lf\n",b,k,k3);
 
 system("pause");
 

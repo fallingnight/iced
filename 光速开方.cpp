@@ -3,11 +3,11 @@
 #include<windows.h>
 
 int main(){
-	float a,c,d;
+	double a,c,d;
 	int b;
 	
 	printf("请输入x:");
-	scanf("%f",&a);
+	scanf("%lf",&a);
 	printf("\n请输入开方次数:");
 	scanf("%d",&b);
 	if(b<=0) {
@@ -19,7 +19,7 @@ int main(){
 	else{
 	d=1.0f/b;
 	c=pow(a,d);
-	printf("\nroot[%d](%.2f)=%f\n",b,a,c);}
+	printf("\nroot[%d](%.2lf)=%lf\n",b,a,c);}
 
 	system("pause");
 	
